@@ -1,0 +1,184 @@
+---
+import AppLayout from '../layouts/AppLayout.astro';
+import ScenarioOrchestrator from '../components/islands/ScenarioOrchestrator.tsx';
+---
+
+<AppLayout title="Pulse - Attack Scenarios">
+  <div class="max-w-6xl">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold text-mauve mb-2">Attack Scenario Orchestration</h1>
+      <p class="text-subtext1 text-lg">Execute sophisticated multi-phase attack simulations for security testing</p>
+    </header>
+
+    <!-- Warning Banner -->
+    <div class="mb-8 p-4 bg-yellow/10 border border-yellow rounded-lg">
+      <div class="flex items-center">
+        <svg class="w-5 h-5 text-yellow mr-3" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+        </svg>
+        <div>
+          <h3 class="font-semibold text-yellow">Security Testing Environment Only</h3>
+          <p class="text-yellow/80 text-sm">These attack scenarios generate realistic malicious activity. Only use in authorized testing environments.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scenario Types Overview -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      <div class="bg-surface0 rounded-lg p-6 border border-surface1">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-red/20 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-red" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-text">APT Campaigns</h3>
+        </div>
+        <p class="text-subtext1 mb-4">Multi-day sophisticated attack simulations mimicking advanced persistent threats.</p>
+        <div class="text-sm text-subtext0">
+          <p>• 14-day attack timelines</p>
+          <p>• 700+ correlated events</p>
+          <p>• 5-phase attack progression</p>
+          <p>• Realistic threat actor TTPs</p>
+        </div>
+      </div>
+
+      <div class="bg-surface0 rounded-lg p-6 border border-surface1">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-orange/20 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-text">Insider Threats</h3>
+        </div>
+        <p class="text-subtext1 mb-4">Employee-based attack patterns including data exfiltration and privilege abuse.</p>
+        <div class="text-sm text-subtext0">
+          <p>• Baseline behavior modeling</p>
+          <p>• Anomalous access patterns</p>
+          <p>• Cloud download spikes</p>
+          <p>• USB/removable media usage</p>
+        </div>
+      </div>
+
+      <div class="bg-surface0 rounded-lg p-6 border border-surface1">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-blue/20 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-blue" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-text">Enterprise Breaches</h3>
+        </div>
+        <p class="text-subtext1 mb-4">Complete attack chain simulations across multiple security platforms.</p>
+        <div class="text-sm text-subtext0">
+          <p>• Multi-platform correlation</p>
+          <p>• 330+ events in 60 minutes</p>
+          <p>• EDR, Email, Identity, Cloud</p>
+          <p>• Real-time attack progression</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Scenario Orchestrator (React Island) -->
+    <ScenarioOrchestrator client:load />
+
+    <!-- Scenario Details -->
+    <div class="mt-8 bg-surface0 rounded-lg p-6 border border-surface1">
+      <h2 class="text-xl font-semibold text-text mb-4">Available Attack Scenarios</h2>
+      
+      <div class="space-y-6">
+        <div class="p-4 bg-mantle rounded-lg border border-surface1">
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <h3 class="font-semibold text-mauve">Operation Digital Heist</h3>
+              <p class="text-sm text-subtext1">14-day APT campaign • 700 events • 5 phases</p>
+            </div>
+            <span class="px-2 py-1 text-xs bg-red/20 text-red rounded">APT</span>
+          </div>
+          <p class="text-sm text-subtext1 mb-3">
+            Sophisticated attack against a financial services company simulating reconnaissance, 
+            initial access, persistence, privilege escalation, and data exfiltration over 14 days.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Reconnaissance & Phishing</span>
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Initial Access</span>
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Persistence & Lateral Movement</span>
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Privilege Escalation</span>
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Data Exfiltration</span>
+          </div>
+        </div>
+
+        <div class="p-4 bg-mantle rounded-lg border border-surface1">
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <h3 class="font-semibold text-mauve">Finance Employee MFA Fatigue Attack</h3>
+              <p class="text-sm text-subtext1">8-day scenario • 135 events • 5 phases</p>
+            </div>
+            <span class="px-2 py-1 text-xs bg-orange/20 text-orange rounded">Insider</span>
+          </div>
+          <p class="text-sm text-subtext1 mb-3">
+            MFA fatigue attack targeting finance employee from Russia, followed by OneDrive exfiltration 
+            with SOAR detection and automated response capabilities.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Normal Behavior</span>
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">MFA Fatigue</span>
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Initial Access</span>
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Data Exfiltration</span>
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Detection & Response</span>
+          </div>
+        </div>
+
+        <div class="p-4 bg-mantle rounded-lg border border-surface1">
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <h3 class="font-semibold text-mauve">Enterprise Breach Scenario</h3>
+              <p class="text-sm text-subtext1">60-minute scenario • 330 events • 6 phases</p>
+            </div>
+            <span class="px-2 py-1 text-xs bg-blue/20 text-blue rounded">Enterprise</span>
+          </div>
+          <p class="text-sm text-subtext1 mb-3">
+            Enhanced enterprise attack with 330+ events across multiple security products 
+            demonstrating correlated attack patterns and multi-platform detection.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Initial Compromise</span>
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Credential Harvesting</span>
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Lateral Movement</span>
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Privilege Escalation</span>
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Data Exfiltration</span>
+            <span class="px-2 py-1 text-xs bg-surface0 text-subtext0 rounded">Persistence</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best Practices -->
+    <div class="mt-8 bg-surface0 rounded-lg p-6 border border-surface1">
+      <h2 class="text-xl font-semibold text-text mb-4">Best Practices</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-mauve mb-2">🎯 Testing Strategy</h3>
+          <ul class="text-sm text-subtext1 space-y-1">
+            <li>• Start with shorter scenarios (30-60 minutes)</li>
+            <li>• Use trace IDs for event correlation</li>
+            <li>• Enable phase tagging for timeline analysis</li>
+            <li>• Monitor SDL ingestion rates during execution</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-mauve mb-2">🔍 Analysis Tips</h3>
+          <ul class="text-sm text-subtext1 space-y-1">
+            <li>• Search by trace ID to isolate scenario events</li>
+            <li>• Use phase tags to understand attack progression</li>
+            <li>• Compare with baseline noise data</li>
+            <li>• Validate detection rule effectiveness</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</AppLayout>

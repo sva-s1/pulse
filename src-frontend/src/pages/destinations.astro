@@ -1,0 +1,94 @@
+---
+import AppLayout from '../layouts/AppLayout.astro';
+import DestinationManager from '../components/islands/DestinationManager.tsx';
+---
+
+<AppLayout title="Pulse - Destinations">
+  <div class="max-w-4xl">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold text-mauve mb-2">Event Destinations</h1>
+      <p class="text-subtext1 text-lg">Configure where to send your generated security events</p>
+    </header>
+
+    <!-- Destination Types Info -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div class="bg-surface0 rounded-lg p-6 border border-surface1">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-blue/20 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-blue" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibent text-text">SDL HEC</h3>
+        </div>
+        <p class="text-subtext1 mb-4">HTTP Event Collector for SentinelOne Data Lake. Supports batching, retry logic, and high-throughput ingestion.</p>
+        <div class="text-sm text-subtext0">
+          <p>• JSON event format</p>
+          <p>• Automatic batching</p>
+          <p>• SSL/TLS support</p>
+          <p>• Token authentication</p>
+        </div>
+      </div>
+
+      <div class="bg-surface0 rounded-lg p-6 border border-surface1">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 bg-green/20 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-green" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2zM3.293 7.707A1 1 0 014 7h12a1 1 0 01.707.293l2 2a1 1 0 010 1.414l-2 2A1 1 0 0116 13H4a1 1 0 01-.707-.293l-2-2a1 1 0 010-1.414l2-2z" clipRule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-text">Syslog Server</h3>
+        </div>
+        <p class="text-subtext1 mb-4">Traditional syslog protocol for SIEM systems, log aggregators, and network devices.</p>
+        <div class="text-sm text-subtext0">
+          <p>• TCP/UDP protocols</p>
+          <p>• RFC 3164/5424 formats</p>
+          <p>• Custom ports</p>
+          <p>• Real-time streaming</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Destination Manager (React Island) -->
+    <DestinationManager client:load />
+
+    <!-- Integration Examples -->
+    <div class="mt-8 bg-surface0 rounded-lg p-6 border border-surface1">
+      <h2 class="text-xl font-semibold text-text mb-4">Integration Examples</h2>
+      
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-mauve mb-2">SentinelOne Data Lake (Primary)</h3>
+          <div class="bg-mantle rounded-lg p-4 border border-surface1">
+            <p class="text-sm text-subtext1 mb-2">SDL HEC URL Format:</p>
+            <code class="text-xs text-green bg-surface0 px-2 py-1 rounded">
+              https://your-instance.sentinelone.net:443/api/v1/cloud_connect/events/raw
+            </code>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-mauve mb-2">SentinelOne Data Lake</h3>
+          <div class="bg-mantle rounded-lg p-4 border border-surface1">
+            <p class="text-sm text-subtext1 mb-2">HEC URL Format:</p>
+            <code class="text-xs text-green bg-surface0 px-2 py-1 rounded">
+              https://your-instance.sentinelone.net:443/api/v1/cloud_connect/events/raw
+            </code>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-mauve mb-2">Generic Syslog (QRadar, ArcSight, etc.)</h3>
+          <div class="bg-mantle rounded-lg p-4 border border-surface1">
+            <p class="text-sm text-subtext1 mb-2">Common Configuration:</p>
+            <div class="text-xs text-green bg-surface0 px-2 py-1 rounded space-y-1">
+              <div>IP: 192.168.1.100</div>
+              <div>Port: 514 (UDP) or 1514 (TCP)</div>
+              <div>Protocol: TCP (recommended for reliability)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</AppLayout>

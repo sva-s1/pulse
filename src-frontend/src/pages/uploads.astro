@@ -1,0 +1,168 @@
+---
+import AppLayout from '../layouts/AppLayout.astro';
+import FileUploader from '../components/islands/FileUploader.tsx';
+---
+
+<AppLayout title="Pulse - File Uploads">
+  <div class="max-w-4xl">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold text-mauve mb-2">File Upload & Processing</h1>
+      <p class="text-subtext1 text-lg">Upload and process CSV, JSON, and log files through SDL HEC</p>
+    </header>
+
+    <!-- Supported Formats -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+      <div class="bg-surface0 rounded-lg p-4 border border-surface1 text-center">
+        <div class="w-8 h-8 mx-auto mb-2 bg-green/20 rounded flex items-center justify-center">
+          <span class="text-green font-mono text-sm">CSV</span>
+        </div>
+        <h3 class="font-semibold text-text text-sm">CSV Files</h3>
+        <p class="text-xs text-subtext1">Comma-separated values</p>
+      </div>
+
+      <div class="bg-surface0 rounded-lg p-4 border border-surface1 text-center">
+        <div class="w-8 h-8 mx-auto mb-2 bg-blue/20 rounded flex items-center justify-center">
+          <span class="text-blue font-mono text-sm">JSON</span>
+        </div>
+        <h3 class="font-semibold text-text text-sm">JSON Files</h3>
+        <p class="text-xs text-subtext1">JavaScript Object Notation</p>
+      </div>
+
+      <div class="bg-surface0 rounded-lg p-4 border border-surface1 text-center">
+        <div class="w-8 h-8 mx-auto mb-2 bg-yellow/20 rounded flex items-center justify-center">
+          <span class="text-yellow font-mono text-sm">TXT</span>
+        </div>
+        <h3 class="font-semibold text-text text-sm">Text Files</h3>
+        <p class="text-xs text-subtext1">Plain text logs</p>
+      </div>
+
+      <div class="bg-surface0 rounded-lg p-4 border border-surface1 text-center">
+        <div class="w-8 h-8 mx-auto mb-2 bg-orange/20 rounded flex items-center justify-center">
+          <span class="text-orange font-mono text-sm">LOG</span>
+        </div>
+        <h3 class="font-semibold text-text text-sm">Log Files</h3>
+        <p class="text-xs text-subtext1">Application logs</p>
+      </div>
+
+      <div class="bg-surface0 rounded-lg p-4 border border-surface1 text-center">
+        <div class="w-8 h-8 mx-auto mb-2 bg-purple/20 rounded flex items-center justify-center">
+          <span class="text-purple font-mono text-sm">GZ</span>
+        </div>
+        <h3 class="font-semibold text-text text-sm">Compressed</h3>
+        <p class="text-xs text-subtext1">Gzip archives</p>
+      </div>
+    </div>
+
+    <!-- Interactive File Uploader (React Island) -->
+    <FileUploader client:load />
+
+    <!-- Processing Options -->
+    <div class="mt-8 bg-surface0 rounded-lg p-6 border border-surface1">
+      <h2 class="text-xl font-semibold text-text mb-4">Processing Options</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-mauve mb-3">SDL HEC Endpoints</h3>
+          <div class="space-y-3">
+            <div class="p-3 bg-mantle rounded border border-surface1">
+              <h4 class="font-medium text-text text-sm">/services/collector/event</h4>
+              <p class="text-xs text-subtext1">JSON event format with metadata</p>
+              <p class="text-xs text-subtext0">• Structured data ingestion</p>
+              <p class="text-xs text-subtext0">• Automatic field extraction</p>
+            </div>
+            
+            <div class="p-3 bg-mantle rounded border border-surface1">
+              <h4 class="font-medium text-text text-sm">/services/collector/raw</h4>
+              <p class="text-xs text-subtext1">Raw text format with sourcetype</p>
+              <p class="text-xs text-subtext0">• Plain text ingestion</p>
+              <p class="text-xs text-subtext0">• Parser-based field extraction</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-mauve mb-3">Rate Control</h3>
+          <div class="space-y-3">
+            <div class="p-3 bg-mantle rounded border border-surface1">
+              <h4 class="font-medium text-text text-sm">Events Per Second (EPS)</h4>
+              <p class="text-xs text-subtext1">Control ingestion rate to prevent overload</p>
+              <p class="text-xs text-subtext0">• Recommended: 10-100 EPS</p>
+              <p class="text-xs text-subtext0">• High volume: up to 1000 EPS</p>
+            </div>
+            
+            <div class="p-3 bg-mantle rounded border border-surface1">
+              <h4 class="font-medium text-text text-sm">Batch Processing</h4>
+              <p class="text-xs text-subtext1">Process files in configurable batches</p>
+              <p class="text-xs text-subtext0">• Default: 100 events per batch</p>
+              <p class="text-xs text-subtext0">• Large files: up to 1000 per batch</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Common Sourcetypes -->
+    <div class="mt-8 bg-surface0 rounded-lg p-6 border border-surface1">
+      <h2 class="text-xl font-semibold text-text mb-4">Common Sourcetypes</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <h3 class="font-semibold text-mauve mb-2">Security Logs</h3>
+          <div class="text-sm space-y-1">
+            <code class="block bg-mantle px-2 py-1 rounded text-green">firewall</code>
+            <code class="block bg-mantle px-2 py-1 rounded text-green">ids</code>
+            <code class="block bg-mantle px-2 py-1 rounded text-green">antivirus</code>
+            <code class="block bg-mantle px-2 py-1 rounded text-green">authentication</code>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-mauve mb-2">Application Logs</h3>
+          <div class="text-sm space-y-1">
+            <code class="block bg-mantle px-2 py-1 rounded text-blue">apache_access</code>
+            <code class="block bg-mantle px-2 py-1 rounded text-blue">nginx_access</code>
+            <code class="block bg-mantle px-2 py-1 rounded text-blue">iis_w3c</code>
+            <code class="block bg-mantle px-2 py-1 rounded text-blue">application_log</code>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-mauve mb-2">Data Formats</h3>
+          <div class="text-sm space-y-1">
+            <code class="block bg-mantle px-2 py-1 rounded text-yellow">json</code>
+            <code class="block bg-mantle px-2 py-1 rounded text-yellow">csv</code>
+            <code class="block bg-mantle px-2 py-1 rounded text-yellow">syslog</code>
+            <code class="block bg-mantle px-2 py-1 rounded text-yellow">kv</code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Usage Tips -->
+    <div class="mt-8 bg-surface0 rounded-lg p-6 border border-surface1">
+      <h2 class="text-xl font-semibold text-text mb-4">Usage Tips</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-mauve mb-2">📁 File Preparation</h3>
+          <ul class="text-sm text-subtext1 space-y-1">
+            <li>• Ensure files are under 50MB for optimal processing</li>
+            <li>• Use UTF-8 encoding for text files</li>
+            <li>• Validate JSON structure before upload</li>
+            <li>• Include headers in CSV files</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-semibold text-mauve mb-2">⚡ Performance</h3>
+          <ul class="text-sm text-subtext1 space-y-1">
+            <li>• Start with lower EPS rates for large files</li>
+            <li>• Monitor SDL ingestion capacity</li>
+            <li>• Use raw endpoint for simple text logs</li>
+            <li>• Process during off-peak hours for large datasets</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</AppLayout>

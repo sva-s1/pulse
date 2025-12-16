@@ -1,0 +1,104 @@
+---
+import AppLayout from '../layouts/AppLayout.astro';
+import GeneratorSelector from '../components/islands/GeneratorSelector.tsx';
+---
+
+<AppLayout title="Pulse - Generators">
+  <div class="max-w-4xl">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold text-mauve mb-2">Security Event Generators</h1>
+      <p class="text-subtext1 text-lg">Generate realistic synthetic security events from 100+ vendors</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+      <!-- Stats Cards -->
+      <div class="bg-surface0 rounded-lg p-4 border border-surface1">
+        <h3 class="text-sm font-medium text-subtext1 mb-1">Total Generators</h3>
+        <p class="text-2xl font-bold text-green">100+</p>
+      </div>
+      
+      <div class="bg-surface0 rounded-lg p-4 border border-surface1">
+        <h3 class="text-sm font-medium text-subtext1 mb-1">Security Categories</h3>
+        <p class="text-2xl font-bold text-blue">8</p>
+      </div>
+      
+      <div class="bg-surface0 rounded-lg p-4 border border-surface1">
+        <h3 class="text-sm font-medium text-subtext1 mb-1">Supported Vendors</h3>
+        <p class="text-2xl font-bold text-peach">50+</p>
+      </div>
+    </div>
+
+    <!-- Interactive Generator Selector (React Island) -->
+    <GeneratorSelector client:load />
+
+    <!-- Categories Overview -->
+    <div class="mt-8 bg-surface0 rounded-lg p-6 border border-surface1">
+      <h2 class="text-xl font-semibold text-text mb-4">Security Categories</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-4 bg-mantle rounded-lg border border-surface1">
+          <h3 class="font-semibold text-mauve mb-2">🌐 Network Security</h3>
+          <p class="text-sm text-subtext1">Firewalls, NDR, network devices (34 generators)</p>
+          <div class="mt-2 text-xs text-subtext0">
+            Cisco ASA, FortiGate, Palo Alto, Juniper, F5, Extreme Networks
+          </div>
+        </div>
+
+        <div class="p-4 bg-mantle rounded-lg border border-surface1">
+          <h3 class="font-semibold text-mauve mb-2">☁️ Cloud Infrastructure</h3>
+          <p class="text-sm text-subtext1">AWS, Google Cloud, Azure (9 generators)</p>
+          <div class="mt-2 text-xs text-subtext0">
+            CloudTrail, GuardDuty, VPC Flow, Route 53, WAF, ELB
+          </div>
+        </div>
+
+        <div class="p-4 bg-mantle rounded-lg border border-surface1">
+          <h3 class="font-semibold text-mauve mb-2">🔐 Identity & Access</h3>
+          <p class="text-sm text-subtext1">IAM, authentication, PAM (20 generators)</p>
+          <div class="mt-2 text-xs text-subtext0">
+            Okta, Azure AD, CyberArk, BeyondTrust, PingFederate
+          </div>
+        </div>
+
+        <div class="p-4 bg-mantle rounded-lg border border-surface1">
+          <h3 class="font-semibold text-mauve mb-2">🖥️ Endpoint Security</h3>
+          <p class="text-sm text-subtext1">EDR, endpoint protection (6 generators)</p>
+          <div class="mt-2 text-xs text-subtext0">
+            CrowdStrike Falcon, SentinelOne, Microsoft Defender
+          </div>
+        </div>
+
+        <div class="p-4 bg-mantle rounded-lg border border-surface1">
+          <h3 class="font-semibold text-mauve mb-2">📧 Email Security</h3>
+          <p class="text-sm text-subtext1">Email security platforms (4 generators)</p>
+          <div class="mt-2 text-xs text-subtext0">
+            Mimecast, Proofpoint, Microsoft Defender for Office 365
+          </div>
+        </div>
+
+        <div class="p-4 bg-mantle rounded-lg border border-surface1">
+          <h3 class="font-semibold text-mauve mb-2">🌐 Web Security</h3>
+          <p class="text-sm text-subtext1">WAF, proxies, CDN (13 generators)</p>
+          <div class="mt-2 text-xs text-subtext0">
+            Cloudflare, Akamai, Imperva, Zscaler, Incapsula
+          </div>
+        </div>
+
+        <div class="p-4 bg-mantle rounded-lg border border-surface1">
+          <h3 class="font-semibold text-mauve mb-2">🏗️ Infrastructure</h3>
+          <p class="text-sm text-subtext1">IT management, backup, DevOps (20 generators)</p>
+          <div class="mt-2 text-xs text-subtext0">
+            Veeam, GitHub, Buildkite, Teleport, ManageEngine
+          </div>
+        </div>
+
+        <div class="p-4 bg-mantle rounded-lg border border-surface1">
+          <h3 class="font-semibold text-mauve mb-2">🔍 SIEM & Analytics</h3>
+          <p class="text-sm text-subtext1">Detection and response platforms</p>
+          <div class="mt-2 text-xs text-subtext0">
+            Darktrace, Vectra AI, ExtraHop, Manchester SIEM
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</AppLayout>

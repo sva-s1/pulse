@@ -1,0 +1,63 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Pulse - Security Log Generator" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-base text-text min-h-screen">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside class="w-64 bg-mantle border-r border-surface0 flex-shrink-0">
+        <div class="p-6">
+          <div class="flex items-center mb-8">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-8 h-8 mr-3 fill-mauve">
+              <path d="M64 96c0-17.7 14.3-32 32-32l160 0c17.7 0 32 14.3 32 32l0 288 96 0 0-128c0-17.7 14.3-32 32-32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-32 0 0 128c0 17.7-14.3 32-32 32l-160 0c-17.7 0-32-14.3-32-32l0-288-96 0 0 128c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l32 0 0-128z"/>
+            </svg>
+            <h1 class="text-2xl font-bold text-mauve">Pulse</h1>
+          </div>
+          <nav class="space-y-2">
+            <a href="/" class="block px-4 py-2 rounded-lg text-text hover:bg-surface0 hover:text-mauve transition-colors">
+              Dashboard
+            </a>
+            <a href="/generators" class="block px-4 py-2 rounded-lg text-text hover:bg-surface0 hover:text-mauve transition-colors">
+              Generators
+            </a>
+            <a href="/scenarios" class="block px-4 py-2 rounded-lg text-text hover:bg-surface0 hover:text-mauve transition-colors">
+              Scenarios
+            </a>
+            <a href="/destinations" class="block px-4 py-2 rounded-lg text-text hover:bg-surface0 hover:text-mauve transition-colors">
+              Destinations
+            </a>
+            <a href="/uploads" class="block px-4 py-2 rounded-lg text-text hover:bg-surface0 hover:text-mauve transition-colors">
+              File Uploads
+            </a>
+            <a href="/settings" class="block px-4 py-2 rounded-lg text-text hover:bg-surface0 hover:text-mauve transition-colors">
+              Settings
+            </a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-8">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>
+
+<style>
+  @import '../styles/global.css';
+</style>
